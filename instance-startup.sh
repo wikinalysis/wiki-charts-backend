@@ -3,6 +3,7 @@ set -ex
 export HOME=/app
 mkdir -p ${HOME}
 cd ${HOME}
+rm -r ${HOME}/tmp
 RELEASE_URL=$(curl \
     -s "http://metadata.google.internal/computeMetadata/v1/instance/attributes/release-url" \
 -H "Metadata-Flavor: Google")
