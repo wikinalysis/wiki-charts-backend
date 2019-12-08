@@ -8,6 +8,7 @@ defmodule WikiChartsWeb.Router do
   scope "/", WikiChartsWeb do
     pipe_through :api
     get "/", TestController, :index
+    get "/database", TestController, :database
   end
 
   scope "/api", WikiChartsWeb do
