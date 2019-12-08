@@ -1,7 +1,7 @@
 defmodule WikiCharts.Graph do
   import Ecto.Query, warn: false
   alias WikiCharts.Repo
-  alias WikiCharts.Wiki.{Wiki, Revision, Page}
+  alias WikiCharts.Wiki.{Revision, Page}
 
   def revision_select(language, field) do
     fields = [:id, :language, field]

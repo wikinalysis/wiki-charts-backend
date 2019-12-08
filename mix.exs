@@ -41,6 +41,8 @@ defmodule WikiCharts.MixProject do
       {:gettext, "~> 0.11"},
       {:distillery, "~> 2.1"},
       {:jason, "~> 1.0"},
+      {:cors_plug, "~> 1.5"},
+      {:proper_case, "~> 1.0.2"},
       {:plug_cowboy, "~> 2.0"}
     ]
   end

@@ -1,7 +1,5 @@
 defmodule WikiCharts.Wiki.Wiki do
   use Ecto.Schema
-  import Ecto.Changeset
-  alias WikiCharts.Wiki.Page
 
   @primary_key {:id, :string, []}
   @derive {Phoenix.Param, key: :id}
