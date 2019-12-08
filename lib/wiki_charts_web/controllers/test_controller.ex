@@ -6,7 +6,11 @@ defmodule WikiChartsWeb.TestController do
   end
 
   def database(conn, _params) do
-    count = WikiCharts.Repo.aggregate(WikiCharts.User, :count, :id)
-    text(conn, "The database is active, there are " <> Integer.to_string(count) <> " users.")
+    count = WikiCharts.Repo.aggregate(WikiCharts.Wiki.Wiki, :count, :id)
+
+    text(
+      conn,
+      "The database is active, there are " <> Integer.to_string(count) <> " wikis in existence."
+    )
   end
 end
