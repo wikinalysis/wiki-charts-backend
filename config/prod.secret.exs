@@ -6,15 +6,17 @@ use Mix.Config
 
 # CHANGES TO THIS FILE WILL NOT BE REFLECTED IN GIT
 # git update-index --assume-unchanged ./config/prod.secret.exs
-connection_name = ""
-database_password = ""
-secret_key_base = ""
+connection_name = System.fetch_env!("INSTANCE_CONNECTION_NAME")
+database_username = System.fetch_env!("DB_USERNAME")
+database_password = System.fetch_env!("DB_PASSWORD")
+database_database = System.fetch_env!("DB_DATABASE")
+secret_key_base = System.fetch_env!("SECRET_BASE_KEY")
 
 config :wiki_charts, WikiCharts.Repo,
-  ssl: true,
-  username: "root",
+  # ssl: true,
+  username: database_username,
   password: database_password,
-  database: "wikidata",
+  database: database_database,
   socket: "/tmp/cloudsql/" <> connection_name,
   pool_size: 10
 
