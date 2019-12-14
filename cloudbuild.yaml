@@ -12,14 +12,18 @@ steps:
   - name: gcr.io/cloud-builders/gsutil
     args: [cp, /releases/start_release, gs://$PROJECT_ID-releases/release]
   - name: gcr.io/cloud-builders/gcloud
-    args:
-      [
+    args: [
+        beta,
         compute,
         instance-groups,
         managed,
         rolling-action,
         restart,
         wiki-group,
+        --min-ready,
+        3m,
+        --max-unavailable,
+        1
         --zone=us-central1-f,
       ]
 options:
