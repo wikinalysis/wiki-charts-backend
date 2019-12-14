@@ -3,9 +3,10 @@ use Mix.Config
 # Configure your database
 config :wiki_charts, WikiCharts.Repo,
   username: "root",
-  password: "",
-  database: "wiki_charts_dev",
+  password: "P@ssw0rd",
+  database: "myschema",
   hostname: "localhost",
+  port: 3307,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

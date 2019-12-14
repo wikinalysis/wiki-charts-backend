@@ -1,10 +1,14 @@
 defmodule WikiCharts.Wiki do
   import Ecto.Query, warn: false
   alias WikiCharts.Repo
-  alias WikiCharts.Wiki.{Wiki, Revision, Page}
+  alias WikiCharts.Wiki.{Wiki, Revision, Page, ActiveWiki}
 
   def list_wikis do
     Repo.all(Wiki)
+  end
+
+  def list_active_wikis do
+    Repo.all(ActiveWiki)
   end
 
   def list_revisions(language) do
