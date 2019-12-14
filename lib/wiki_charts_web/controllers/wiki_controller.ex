@@ -9,4 +9,9 @@ defmodule WikiChartsWeb.WikiController do
     wikis = Wiki.list_wikis()
     render(conn, "index.json", wikis: wikis)
   end
+
+  def current(conn, _params) do
+    wikis = Wiki.list_active_wikis()
+    render(conn, "index.json", wikis: wikis)
+  end
 end

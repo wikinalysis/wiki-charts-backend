@@ -24,6 +24,7 @@ defmodule WikiChartsWeb.Router do
 
   scope "/api", WikiChartsWeb do
     pipe_through :api
+    get "/wikis/current", WikiController, :current
     resources "/wikis", WikiController, only: [:index]
 
     get "/revisions/select", GraphController, :revision_select

@@ -1,9 +1,9 @@
-defmodule WikiCharts.Wiki.Wiki do
+defmodule WikiCharts.Wiki.ActiveWiki do
   use Ecto.Schema
 
   @primary_key {:id, :string, []}
   @derive {Phoenix.Param, key: :id}
-  schema "wikis" do
+  schema "current_wikis" do
     field :language_name, :string
     field :language_local, :string
     field :article_count, :integer
