@@ -1,12 +1,12 @@
 steps:
   - name: gcr.io/cloud-builders/gsutil
-    args: [cp, gs://$PROJECT_ID-misc/prod.env, /releases/prod.env]
+    args: [cp, gs://$PROJECT_ID-misc/prod.secret.exs, ./config/prod.secret.exs]
   - name: gcr.io/cloud-builders/docker
     entrypoint: "bash"
     args:
       - "-c"
       - |
-        docker build --env-file /releases/prod.env -t gcr.io/$PROJECT_ID/wiki-backend .
+        docker build -q -t gcr.io/$PROJECT_ID/wiki-backend .
         container_id=$$(docker create gcr.io/$PROJECT_ID/wiki-backend)
         docker cp ${container_id}:/app/start_release /releases/start_release
   - name: gcr.io/cloud-builders/gsutil
@@ -20,7 +20,7 @@ steps:
         rolling-action,
         restart,
         wiki-group,
-        --region=us-central1-f,
+        --zone=us-central1-f,
       ]
 options:
   volumes:

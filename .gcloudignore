@@ -6,3 +6,7 @@
 /test/
 /tmp/
 /scripts/
+
+/config/prod.secret.exs
+cloud_sql_proxy
+prod.env
