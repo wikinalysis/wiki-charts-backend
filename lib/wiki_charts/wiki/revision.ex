@@ -6,7 +6,7 @@ defmodule WikiCharts.Wiki.Revision do
   @primary_key {:id, :string, []}
   @derive {Phoenix.Param, key: :id}
   schema "revisions" do
-    field :created_at, :string
+    field :created_at, :naive_datetime
     field :has_text, :boolean, default: false
     field :language, :string, source: :wiki_language
     field :is_first, :boolean, default: false
