@@ -2,6 +2,10 @@ defmodule WikiChartsWeb.GraphView do
   use WikiChartsWeb, :view
   alias WikiChartsWeb.GraphView
 
+  def render("histogram.json", %{data: data}) do
+    %{meta: create_meta(data), data: data}
+  end
+
   def render("revision_select.json", %{data: data}) do
     %{
       meta: create_meta(data),
@@ -21,30 +25,7 @@ defmodule WikiChartsWeb.GraphView do
   end
 
   defp create_meta(data) do
-    case List.first(data) do
-      %{text_length: _field} ->
-        {min, max} = Enum.min_max_by(data, fn d -> d.text_length end)
-
-        %{
-          max_text_length: max.text_length,
-          min_text_length: min.text_length
-        }
-
-      %{created_at: _field} ->
-        {min, max} = Enum.min_max_by(data, fn d -> d.created_at end)
-
-        %{
-          max_created_at: max.created_at,
-          min_created_at: min.created_at
-        }
-
-      %{revision_count: _field} ->
-        {min, max} = Enum.min_max_by(data, fn d -> d.revision_count end)
-
-        %{
-          max_revision_count: max.revision_count,
-          min_revision_count: min.revision_count
-        }
-    end
+    {min, max} = Enum.min_max_by(data, fn d -> d.floor end)
+    %{minimum: min.floor, maximum: max.ceiling}
   end
 end

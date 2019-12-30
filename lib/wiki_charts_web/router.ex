@@ -30,6 +30,9 @@ defmodule WikiChartsWeb.Router do
     get "/revisions/select", GraphController, :revision_select
     get "/pages/select", GraphController, :page_select
 
+    get "/histogram/revisions", GraphController, :revisions
+    get "/histogram/pages", GraphController, :pages
+
     resources "/revisions", RevisionController, only: [:index, :show]
     resources "/pages", PageController, only: [:index, :show]
   end
